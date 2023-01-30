@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class InventoryUI : MonoBehaviour
 {
+    private TextMeshProUGUI pelletText;
     // Start is called before the first frame update
     void Start()
     {
-        
+        pelletText= GetComponent<TextMeshProUGUI>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdatePelletText(PlayerInventory playerInventory)
     {
-        
+        pelletText.text = "Score : " + playerInventory.NumberOfPellets.ToString();
     }
+
+   
 }

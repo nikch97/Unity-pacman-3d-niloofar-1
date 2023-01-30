@@ -408,6 +408,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4bd5305be6431d4fa1bbd049339457e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPelletCollected:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1278275276}
+        m_TargetAssemblyTypeName: InventoryUI, Assembly-CSharp
+        m_MethodName: UpdatePelletText
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &446416946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1075,8 +1090,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 207.1, y: -40}
-  m_SizeDelta: {x: 350, y: 50}
+  m_AnchoredPosition: {x: 339.89996, y: -106.3}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1278275274
 MonoBehaviour:
