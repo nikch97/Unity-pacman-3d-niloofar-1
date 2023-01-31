@@ -17,8 +17,11 @@ public class InventoryUI : MonoBehaviour
     public void UpdatePelletText(PlayerInventory playerInventory)
     {
         pelletText.text = "Score : " + playerInventory.NumberOfPellets.ToString();
-        energyText.text = "Enery : " + playerInventory.Energy.ToString();
+        //energyText.text = "Energy : " + playerInventory.Energy.ToString();
+    }
+    public void UpdateEnergyText(PlayerInventory playerInventory)
+    {
+        energyText.text = "Energy : " + playerInventory.Energy.ToString();
     }
 
-   
 }
