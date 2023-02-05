@@ -1411,6 +1411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401187161, guid: caf94a5934ff44745966a1edc6d7f60f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d1863575dd99be242bd0a907c0e18cca, type: 3}
     - target: {fileID: 1667282213948032, guid: caf94a5934ff44745966a1edc6d7f60f, type: 3}
       propertyPath: m_Name
       value: Cherry

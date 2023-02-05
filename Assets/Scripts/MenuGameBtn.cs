@@ -6,11 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuGameBtn : MonoBehaviour
 {
     // Build number of scene to start when start btn is pressed
-    public int gameStartScene;
+    public int pacMan=1;
+
+    public void Start()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 
     public void StartGame()
     {
-        SceneManager.LoadScene(gameStartScene);
+        SceneManager.LoadScene(pacMan);
     }
 
     public void QuitGame()
