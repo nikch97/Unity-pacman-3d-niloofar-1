@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 // FSM States for the enemy
@@ -9,6 +10,7 @@ public class EnemyAI : MonoBehaviour
 {
     GameObject player;
     NavMeshAgent agent;
+    //[SerializeField]
     public float chaseDistance = 20.0f;
     protected EnemyState state = EnemyState.DEFAULT;
     protected Vector3 destination = new Vector3(0, 0, 0);
@@ -43,7 +45,7 @@ public class EnemyAI : MonoBehaviour
                 break;
             case EnemyState.MOVING
         :
-                Debug.Log("Dest = " + destination);
+                //Debug.Log("Dest = " + destination);
                 if (Vector3.Distance(transform.position, destination) < 0.05f)
                 {
                     state = EnemyState.DEFAULT
