@@ -20,7 +20,7 @@ public class SimpleController : MonoBehaviour
     private float playerSpeed = 7.0f;
     private float jumpHeight = 1.5f;
     private float gravityValue = -9.81f;
-    private bool isInvincible = false;
+    //private bool isInvincible = false;
     [SerializeField]
     private GameObject model;
 

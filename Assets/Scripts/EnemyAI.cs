@@ -11,15 +11,23 @@ public class EnemyAI : MonoBehaviour
 {
     GameObject player;
     NavMeshAgent agent;
-    //[SerializeField]
     public float chaseDistance = 20.0f;
     protected EnemyState state = EnemyState.DEFAULT;
     protected Vector3 destination = new Vector3(0, 0, 0);
+
+    //attacking ghost
+    [SerializeField]
+    public GameObject playerObject;
+    [SerializeField]
+    public float speed = 1.5f;
+    private Vector3 offset = new Vector3(0, .6f, 0);
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         agent = this.GetComponent<NavMeshAgent>();
+       
     }
     private Vector3 RandomPosition()
     {
@@ -28,6 +36,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         switch (state)
         {
             case EnemyState.DEFAULT
@@ -36,7 +45,8 @@ public class EnemyAI : MonoBehaviour
                 if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance
                 )
                 {
-                    state = EnemyState.CHASE;                 
+                    state = EnemyState.CHASE;
+                    transform.position = Vector3.MoveTowards(transform.position, playerObject.transform.position + offset, speed * Time.deltaTime);
                 }
                 else
                 {
@@ -75,4 +85,16 @@ public class EnemyAI : MonoBehaviour
                 break;
         }
     }
+
+ private void OnTriggerEnter(Collider col) {
+        PlayerInventory playerInventory = col.GetComponent<PlayerInventory>();
+
+        if (col.gameObject.tag == playerObject.tag) {
+            playerInventory.Energy = playerInventory.Energy - 2;
+            Debug.Log("Hit player");
+        }
+
+    }
+
+
 }

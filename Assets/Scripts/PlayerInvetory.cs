@@ -8,7 +8,7 @@ public class PlayerInventory : MonoBehaviour
 {
     public int gameOver = 2;
     public int NumberOfPellets { get; private set; }
-    public int Energy { get; private set; } = 5;
+    public int Energy { get;  set; } = 5;
  
    public UnityEvent<PlayerInventory> OnPelletCollected;
 
