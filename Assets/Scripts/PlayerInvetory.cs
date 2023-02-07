@@ -19,6 +19,12 @@ public class PlayerInventory : MonoBehaviour
         OnPelletCollected.Invoke(this);
     }
 
+    //public void PowPelletCollected()
+    //{
+    //    Energy = Energy - 20;
+    //    OnPelletCollected.Invoke(this);
+    //}
+
     public void BadPelletCollected()
     {
         Energy = Energy-5;

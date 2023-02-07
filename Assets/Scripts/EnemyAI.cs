@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -35,7 +36,7 @@ public class EnemyAI : MonoBehaviour
                 if (Vector3.Distance(transform.position, player.transform.position) < chaseDistance
                 )
                 {
-                    state = EnemyState.CHASE;
+                    state = EnemyState.CHASE;                 
                 }
                 else
                 {
@@ -43,6 +44,7 @@ public class EnemyAI : MonoBehaviour
                     agent.SetDestination(destination);
                 }
                 break;
+
             case EnemyState.MOVING
         :
                 //Debug.Log("Dest = " + destination);
