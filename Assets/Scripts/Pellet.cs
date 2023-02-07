@@ -7,7 +7,7 @@ using UnityEngine;
 
 public class Pellets : MonoBehaviour
 {
-    public AudioSource eatFruit;
+    AudioSource eatFruit;
 
     public void Start()
     {
@@ -16,14 +16,31 @@ public class Pellets : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        eatFruit.Play();
-        PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
-
-        if(playerInventory !=null )
+        if (other.gameObject.CompareTag("Player"))
         {
-            playerInventory.PelletCollected();
-            gameObject.SetActive(false);
-            
+            PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
+
+            if (playerInventory != null)
+            {
+                playerInventory.PelletCollected();
+                //gameObject.SetActive(false);
+
+            }
+
+            Renderer[] allRenderers = gameObject.GetComponentsInChildren<Renderer>();
+            foreach (Renderer c in allRenderers) c.enabled = false;
+            Collider[] allColliders = gameObject.GetComponentsInChildren<Collider>();
+            foreach (Collider c in allColliders) c.enabled = false;
+
+            StartCoroutine(PlayAndDestroy(eatFruit.clip.length));
         }
     }
+
+    private IEnumerator PlayAndDestroy(float waitTime)
+    {
+        eatFruit.Play();
+        yield return new WaitForSeconds(waitTime);
+        Destroy(gameObject);
+    }
+
 }
