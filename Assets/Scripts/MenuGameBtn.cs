@@ -7,6 +7,7 @@ public class MenuGameBtn : MonoBehaviour
 {
     // Build number of scene to start when start btn is pressed
     public int pacMan=1;
+    public int endGame = 3;
 
     public void Start()
     {
@@ -24,5 +25,10 @@ public class MenuGameBtn : MonoBehaviour
        // UnityEditor.EditorApplication.isPlaying = false;
         //Debug.Log("Quit the game!");
         Application.Quit();
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene(endGame);
     }
 }
