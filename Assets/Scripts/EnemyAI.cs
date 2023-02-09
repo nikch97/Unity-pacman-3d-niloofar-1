@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 // FSM States for the enemy
 public enum EnemyState { CHASE, MOVING, DEFAULT };
 [RequireComponent(typeof(NavMeshAgent))]
@@ -14,6 +15,7 @@ public class EnemyAI : MonoBehaviour
     public float chaseDistance = 20.0f;
     protected EnemyState state = EnemyState.DEFAULT;
     protected Vector3 destination = new Vector3(0, 0, 0);
+    AudioSource eatGhost;
 
     //attacking ghost
     [SerializeField]
@@ -22,12 +24,15 @@ public class EnemyAI : MonoBehaviour
     public float speed = 1.5f;
     private Vector3 offset = new Vector3(0, .6f, 0);
 
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         agent = this.GetComponent<NavMeshAgent>();
-       
+       eatGhost = GetComponent<AudioSource>();
+
+
     }
     private Vector3 RandomPosition()
     {
@@ -87,12 +92,15 @@ public class EnemyAI : MonoBehaviour
     }
 
  private void OnTriggerEnter(Collider col) {
-        PlayerInventory playerInventory = col.GetComponent<PlayerInventory>();
-
         if (col.gameObject.tag == playerObject.tag) {
-            playerInventory.Energy = playerInventory.Energy - 2;
-            Debug.Log("Hit player");
+            PlayerInventory playerInventory = col.GetComponent<PlayerInventory>();
+            if (playerInventory != null)
+            {
+                playerInventory.GhostCollide();
+                eatGhost.Play();
+            }
         }
+        
 
     }
 

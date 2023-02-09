@@ -9,8 +9,13 @@ public class PlayerInventory : MonoBehaviour
     public int gameOver = 2;
     public int NumberOfPellets { get; private set; }
     public int Energy { get;  set; } = 5;
- 
+
    public UnityEvent<PlayerInventory> OnPelletCollected;
+
+    public void Start()
+    {
+     
+    }
 
     public void PelletCollected()
     {
@@ -21,7 +26,7 @@ public class PlayerInventory : MonoBehaviour
 
     //public void PowPelletCollected()
     //{
-    //    Energy = Energy - 20;
+    //    Energy = Energy + 20;
     //    OnPelletCollected.Invoke(this);
     //}
 
@@ -29,7 +34,16 @@ public class PlayerInventory : MonoBehaviour
     {
         Energy = Energy-5;
         OnPelletCollected.Invoke(this);
-        if (Energy == 0)
+        if (Energy <= 0)
+        {
+            EndGame();
+        }
+    }
+    public void GhostCollide()
+    {
+        Energy = Energy - 2;
+        OnPelletCollected.Invoke(this);
+        if (Energy <= 0)
         {
             EndGame();
         }
