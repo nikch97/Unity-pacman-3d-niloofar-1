@@ -28,7 +28,8 @@ public class MenuGameBtn : MonoBehaviour
     }
 
     public void EndGame()
-    {
+    {Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(endGame);
     }
 }
