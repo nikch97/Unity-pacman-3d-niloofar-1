@@ -16,7 +16,7 @@ public class PlayerInventory : MonoBehaviour
     {
      
     }
-
+    //increasin energy & score
     public void PelletCollected()
     {
         NumberOfPellets++;
@@ -24,12 +24,7 @@ public class PlayerInventory : MonoBehaviour
         OnPelletCollected.Invoke(this);
     }
 
-    //public void PowPelletCollected()
-    //{
-    //    Energy = Energy + 20;
-    //    OnPelletCollected.Invoke(this);
-    //}
-
+   //decreasin energy
     public void BadPelletCollected()
     {
         Energy = Energy-5;
@@ -39,6 +34,8 @@ public class PlayerInventory : MonoBehaviour
             EndGame();
         }
     }
+
+    //decreasin energy
     public void GhostCollide()
     {
         Energy = Energy - 2;

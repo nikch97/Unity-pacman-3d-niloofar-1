@@ -13,7 +13,7 @@ public class Pellets : MonoBehaviour
     {
         eatFruit = GetComponent<AudioSource>();
     }
-
+    //destroy the pellet after collision and play a sound
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))

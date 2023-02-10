@@ -8,7 +8,7 @@ public class MenuGameBtn : MonoBehaviour
     // Build number of scene to start when start btn is pressed
     public int pacMan=1;
     public int endGame = 3;
-
+    // handling the buttons & other scenes
     public void Start()
     {
         Cursor.visible = true;
@@ -27,9 +27,19 @@ public class MenuGameBtn : MonoBehaviour
         Application.Quit();
     }
 
-    public void EndGame()
-    {Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
-        SceneManager.LoadScene(endGame);
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            PlayerInventory playerInventory = other.GetComponent<PlayerInventory>();
+
+            if (playerInventory != null)
+            {
+                SceneManager.LoadScene(endGame);
+
+            }
+
+           
+        }
     }
 }

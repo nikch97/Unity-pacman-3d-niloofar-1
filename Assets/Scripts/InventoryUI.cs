@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
         pelletText= GetComponent<TextMeshProUGUI>();
         energyText = GetComponent<TextMeshProUGUI>();
     }
-
+    //update the UI for energy & score
     public void UpdatePelletText(PlayerInventory playerInventory)
     {
         pelletText.text = "Score : " + playerInventory.NumberOfPellets.ToString();
